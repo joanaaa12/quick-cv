@@ -1,0 +1,53 @@
+.scrollbar {
+  overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+/* Set the width and height of the scrollbar */
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  scrollbar-width: none;
+}
+
+.scrollbar:hover::-webkit-scrollbar-track {
+  background-color: transparent;
+  scrollbar-width: auto;
+  width: 8px;
+  height: 8px;
+}
+
+/* Style the thumb of the scrollbar - create inset effect with border */
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: auto;
+  /* Create inset effect using border */
+  border: 0.25px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 4px;
+  cursor: auto;
+  /* Create inset effect using border */
+  border: 0.25px solid transparent;
+  background-clip: content-box;
+}
+
+/* Style the track of the scrollbar */
+.scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 4px;
+}

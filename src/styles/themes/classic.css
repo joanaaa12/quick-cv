@@ -1,0 +1,329 @@
+/* Classic Theme — scoped under .theme-classic */
+
+.theme-classic.accent-teal {
+  --accent: #0d9488;
+  --accent-bg: #f0fdfa;
+}
+.theme-classic.accent-indigo {
+  --accent: #4f46e5;
+  --accent-bg: #eef2ff;
+}
+.theme-classic.accent-coral {
+  --accent: #e05252;
+  --accent-bg: #fff1f1;
+}
+.theme-classic.accent-amber {
+  --accent: #d97706;
+  --accent-bg: #fffbeb;
+}
+
+.theme-classic .resume-document {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 13px;
+  color: #111;
+  line-height: 1.6;
+  background: #fff;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+/* Header with optional headshot */
+.theme-classic .resume-document .header-with-photo {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 4px;
+}
+
+.theme-classic .resume-document .headshot {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #ccc;
+}
+
+.theme-classic .resume-document .header-text {
+  flex: 1;
+}
+
+/* Name */
+.theme-classic .resume-document h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-heading, #111);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+/* Contact lines */
+.theme-classic .resume-document .contact-line {
+  font-size: 12px;
+  color: var(--color-contact, #555);
+  margin: 2px 0;
+  line-height: 1.5;
+}
+
+/* Section headings */
+.theme-classic .resume-document h2 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-heading, #111);
+  border-bottom: 1px solid var(--color-heading, #111);
+  padding-bottom: 3px;
+  margin: 24px 0 8px 0;
+}
+
+/* Entry containers */
+.theme-classic .resume-document .entry {
+  margin-bottom: 12px;
+  page-break-inside: avoid;
+}
+
+/* Entry header row: company name + dates on same line */
+.theme-classic .resume-document .entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.theme-classic .resume-document .entry-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #111;
+}
+
+/* Dates — right-aligned */
+.theme-classic .resume-document .entry-dates {
+  font-size: 12px;
+  color: var(--color-subtitle, #555);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* Role / subtitle — italic */
+.theme-classic .resume-document .entry-subtitle {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--color-subtitle, #444);
+  margin: 1px 0 4px 0;
+}
+
+/* Bullet points */
+.theme-classic .resume-document ul {
+  margin: 4px 0 4px 0;
+  padding-left: 20px;
+}
+
+.theme-classic .resume-document li {
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 2px;
+  color: var(--color-body, #222);
+}
+
+/* Paragraph text */
+.theme-classic .resume-document p {
+  font-size: 13px;
+  color: var(--color-body, #333);
+  margin: 3px 0;
+  line-height: 1.6;
+}
+
+/* Skills */
+.theme-classic .resume-document .skills-block {
+  margin: 0;
+}
+
+.theme-classic .resume-document .skills-line {
+  font-size: 13px;
+  margin: 2px 0;
+}
+
+.theme-classic .resume-document .skills-line strong {
+  font-weight: bold;
+  color: #111;
+}
+
+/* Credential link */
+.theme-classic .resume-document .credential-link {
+  font-size: 11px;
+  color: #555;
+  text-decoration: underline;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+/* References section — visually lighter */
+.theme-classic .resume-document .ref-on-request {
+  font-size: 12px;
+  font-style: italic;
+  color: #555;
+}
+
+.theme-classic .resume-document .ref-section {
+  margin: 0;
+}
+
+.theme-classic .resume-document .ref-entry {
+  margin-bottom: 10px;
+}
+
+.theme-classic .resume-document .ref-name {
+  font-size: 12.5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.theme-classic .resume-document .ref-meta {
+  font-size: 11.5px;
+  color: #666;
+  margin: 1px 0;
+}
+
+.theme-classic .resume-document .ref-contact {
+  font-size: 11px;
+  color: #777;
+}
+
+/* Links */
+.theme-classic .resume-document a {
+  color: #111;
+  text-decoration: underline;
+}
+
+/* Hide hr tags */
+.theme-classic .resume-document hr {
+  display: none;
+}
+
+/* ── Two-column layout ── */
+.layout-2col.theme-classic .resume-document {
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+.layout-2col.theme-classic .resume-document .twocol-header {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px 36px 24px;
+  border-bottom: 2px solid var(--accent, #111);
+}
+
+.layout-2col.theme-classic .resume-document .twocol-header h1 {
+  font-size: 26px;
+  margin: 0 0 4px 0;
+}
+
+.layout-2col.theme-classic .resume-document .twocol-header.creative-header {
+  background: var(--accent, #111);
+  color: #fff;
+  border-bottom: none;
+}
+
+.layout-2col.theme-classic .resume-document .twocol-header.creative-header h1 {
+  color: var(--color-header-text, #fff);
+}
+
+.layout-2col.theme-classic
+  .resume-document
+  .twocol-header.creative-header
+  .contact-line {
+  color: var(--color-header-text, rgba(255, 255, 255, 0.75));
+}
+
+.layout-2col.theme-classic .resume-document .twocol-header .sidebar-headshot {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  float: left;
+  margin-right: 16px;
+  border: 2px solid #ccc;
+}
+
+.layout-2col.theme-classic .resume-document .twocol-header .twocol-header-text {
+  overflow: hidden;
+}
+
+.layout-2col.theme-classic .resume-document .twocol-body {
+  display: flex;
+  min-height: 960px;
+}
+
+.layout-2col.theme-classic .resume-document .twocol-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--accent-bg, #f0fdfa);
+  padding: 24px 20px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.layout-2col.theme-classic .resume-document .twocol-main {
+  flex: 1;
+  padding: 24px 28px;
+}
+
+/* ── Creative single-column header ── */
+.style-creative.theme-classic .resume-document {
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+.style-creative.theme-classic .resume-document .creative-header {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--accent, #111);
+  color: #fff;
+  padding: 32px 48px;
+}
+
+.style-creative.theme-classic .resume-document .creative-header h1 {
+  color: var(--color-header-text, #fff);
+  margin-bottom: 4px;
+}
+
+.style-creative.theme-classic .resume-document .creative-header .contact-line {
+  color: var(--color-header-text, rgba(255, 255, 255, 0.75));
+}
+
+.style-creative.theme-classic .resume-document .resume-body {
+  padding: 24px 48px;
+}
+
+/* Custom template image — suppress header backgrounds, keep text teal */
+.no-header-bg .resume-document .creative-header,
+.no-header-bg .resume-document .twocol-header,
+.no-header-bg .resume-document .twocol-header.creative-header {
+  background: transparent !important;
+}
+
+.no-header-bg .resume-document .creative-header h1,
+.no-header-bg .resume-document .twocol-header h1 {
+  color: var(--color-header-text, var(--color-heading, var(--accent, #0d9488)));
+}
+
+.no-header-bg .resume-document .creative-header .contact-line,
+.no-header-bg .resume-document .twocol-header .contact-line {
+  color: var(--color-header-text, var(--color-contact, var(--accent, #0d9488)));
+  opacity: 0.9;
+}
+
+@media print {
+  .theme-classic .resume-document {
+    padding: 0;
+    max-width: 100%;
+  }
+  .theme-classic .resume-document a {
+    color: #111;
+    text-decoration: none;
+  }
+}

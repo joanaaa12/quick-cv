@@ -1,0 +1,49 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  /* Force browsers to print background colours and images */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body, #root {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Reset the scale transform applied by PreviewPane */
+  #resume-preview {
+    position: relative !important;
+    transform: none !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  /* Reset the outer sizing wrapper and scale div inside PreviewPane */
+  #resume-preview > div,
+  #resume-preview > div > div {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Keep the content layer above the background image */
+  #resume-preview .resume-content-layer {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  .resume-document {
+    padding: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}
