@@ -55,7 +55,7 @@ export default function App() {
           onThemeChange={store.setTheme}
           onAccentChange={store.setAccentColor}
           onColorPaletteChange={store.setColorPalette}
-          onStartOver={() => { store.startOver(); setScreen('templates') }}
+          onStartOver={() => { store.startOver(); setScreen('landing') }}
         />
       </div>
       {/* Mobile tab bar */}
