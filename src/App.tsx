@@ -34,7 +34,15 @@ export default function App() {
   }
 
   if (screen === 'landing') {
-    return <LandingPage onCreateResume={() => setScreen('templates')} />
+    return (
+      <LandingPage
+        onCreateResume={() => setScreen('templates')}
+        onUploadResume={(data) => {
+          store.setResume(data)
+          setScreen('templates')
+        }}
+      />
+    )
   }
 
   if (screen === 'templates') {

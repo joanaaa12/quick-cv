@@ -1,14 +1,49 @@
 import { useState, useMemo, useRef, useCallback } from "react";
 import type { ThemeId, AccentColor } from "@/types/resume";
+import type { ResumeData } from "@/types/resume";
 import { ACCENT_COLORS } from "@/constants/themes";
+import { parseResumeFromFile } from "@/utils/parseResumeFromFile";
 
 // ─── Landing Page ────────────────────────────────────────────────────────────
 
 interface LandingPageProps {
   onCreateResume: () => void;
+  onUploadResume: (data: ResumeData) => void;
 }
 
-export function LandingPage({ onCreateResume }: LandingPageProps) {
+export function LandingPage({
+  onCreateResume,
+  onUploadResume,
+}: LandingPageProps) {
+  const [uploadState, setUploadState] = useState<"idle" | "parsing" | "error">(
+    "idle",
+  );
+  const [uploadError, setUploadError] = useState("");
+  const [isImageFile, setIsImageFile] = useState(false);
+  const uploadInputRef = useRef<HTMLInputElement>(null);
+
+  const handleUploadFile = useCallback(
+    async (file: File) => {
+      setUploadState("parsing");
+      setUploadError("");
+      setIsImageFile(file.type.startsWith("image/"));
+      const result = await parseResumeFromFile(file);
+      if (result.ok) {
+        onUploadResume(result.data);
+      } else {
+        setUploadState("error");
+        setUploadError(result.error);
+      }
+    },
+    [onUploadResume],
+  );
+
+  const handleUploadChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) handleUploadFile(file);
+    e.target.value = "";
+  };
+
   return (
     <div
       className="min-h-screen flex flex-col"
@@ -45,7 +80,7 @@ export function LandingPage({ onCreateResume }: LandingPageProps) {
           </div>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* <div className="flex items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={onCreateResume}
@@ -54,7 +89,7 @@ export function LandingPage({ onCreateResume }: LandingPageProps) {
             >
               Create my resume
             </button>
-          </div>
+          </div> */}
         </div>
       </header>
 
@@ -85,15 +120,79 @@ export function LandingPage({ onCreateResume }: LandingPageProps) {
               >
                 Create my resume
               </button>
-              {/* <button
+
+              {/* Hidden file input */}
+              <input
+                ref={uploadInputRef}
+                type="file"
+                accept=".pdf,image/*"
+                className="hidden"
+                onChange={handleUploadChange}
+              />
+
+              <button
                 type="button"
-                disabled
-                title="Coming soon"
-                className="px-7 py-3.5 text-base font-bold text-gray-400 rounded-xl border-2 border-gray-200 bg-white cursor-not-allowed select-none"
+                disabled={uploadState === "parsing"}
+                onClick={() => uploadInputRef.current?.click()}
+                className="px-7 py-3.5 text-base font-bold rounded-xl border-2 transition-all hover:bg-gray-50 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2"
+                style={{
+                  borderColor: "#0d9488",
+                  color: "#0d9488",
+                  background: "white",
+                }}
               >
-                Upload my resume
-              </button> */}
+                {uploadState === "parsing" ? (
+                  <>
+                    <svg
+                      className="animate-spin"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                    </svg>
+                    {isImageFile ? "Reading image…" : "Parsing…"}
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    Upload my resume
+                  </>
+                )}
+              </button>
             </div>
+
+            {/* Upload error */}
+            {uploadState === "error" && (
+              <p className="text-sm text-red-500 max-w-sm -mt-3">
+                {uploadError}{" "}
+                <button
+                  type="button"
+                  className="underline font-medium"
+                  onClick={() => setUploadState("idle")}
+                >
+                  Dismiss
+                </button>
+              </p>
+            )}
           </div>
 
           {/* RIGHT — floating resume mockup card */}
